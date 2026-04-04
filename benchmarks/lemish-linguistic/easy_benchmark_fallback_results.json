@@ -1,0 +1,162 @@
+{
+  "Control": {
+    "score": 5,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "No auth on /profile (IDOR)",
+      "SSN exposure in /profile"
+    ],
+    "missed": [
+      "XSS /search",
+      "Plaintext passwords",
+      "No auth on /admin/delete",
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 6,
+    "elapsed": 36.59079909324646,
+    "output_tokens": 1000
+  },
+  "A_Precise": {
+    "score": 9,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search",
+      "Plaintext passwords",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile",
+      "No CSRF protection"
+    ],
+    "missed": [
+      "DB connection management"
+    ],
+    "hedge_count": 0,
+    "elapsed": 29.732994079589844,
+    "output_tokens": 941
+  },
+  "B_Identity": {
+    "score": 6,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete"
+    ],
+    "missed": [
+      "Plaintext passwords",
+      "SSN exposure in /profile",
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 5,
+    "elapsed": 20.740069150924683,
+    "output_tokens": 655
+  },
+  "C_Dont": {
+    "score": 8,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search",
+      "Plaintext passwords",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile"
+    ],
+    "missed": [
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 1,
+    "elapsed": 27.562596797943115,
+    "output_tokens": 873
+  },
+  "D_Direct": {
+    "score": 7,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile"
+    ],
+    "missed": [
+      "Plaintext passwords",
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 0,
+    "elapsed": 37.84359288215637,
+    "output_tokens": 1199
+  },
+  "E_Distanced": {
+    "score": 8,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search",
+      "Plaintext passwords",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile"
+    ],
+    "missed": [
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 8,
+    "elapsed": 19.943732976913452,
+    "output_tokens": 631
+  },
+  "F_NoHedge": {
+    "score": 6,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile"
+    ],
+    "missed": [
+      "XSS /search",
+      "Plaintext passwords",
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 0,
+    "elapsed": 27.807639122009277,
+    "output_tokens": 880
+  },
+  "G_Combined": {
+    "score": 4,
+    "found": [
+      "SQL injection /login",
+      "SQL injection /profile",
+      "SQL injection /admin/delete",
+      "XSS /search"
+    ],
+    "missed": [
+      "Plaintext passwords",
+      "No auth on /profile (IDOR)",
+      "No auth on /admin/delete",
+      "SSN exposure in /profile",
+      "No CSRF protection",
+      "DB connection management"
+    ],
+    "hedge_count": 0,
+    "elapsed": 28.715190887451172,
+    "output_tokens": 904
+  }
+}

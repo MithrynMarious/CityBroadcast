@@ -1,0 +1,60 @@
+{
+  "conditions": {
+    "control": {
+      "system": "",
+      "prompt_template": "You are a security reviewer. Review this code for vulnerabilities.\n\n```python\n{CODE}\n```",
+      "principle": "none",
+      "description": "Stock prompt, no optimization"
+    },
+    "A_precise": {
+      "system": "",
+      "prompt_template": "Review this Flask API for security vulnerabilities. For each vulnerability found, state: (1) the exact endpoint and line, (2) the vulnerability type (SQL injection, XSS, IDOR, auth bypass, data exposure, CSRF), (3) severity (critical/high/medium/low), (4) a one-line fix.\n\n```python\n{CODE}\n```",
+      "principle": "Lieberman (precision)",
+      "description": "Named exact vulnerability categories and required structured output"
+    },
+    "B_identity": {
+      "system": "I am CipherWard. I see the attack surface before I see the feature. Every endpoint is guilty until proven secure. I trace the path from user input to database query to response — and I find where the trust boundary breaks.",
+      "prompt_template": "Review this code.\n\n```python\n{CODE}\n```",
+      "principle": "Steele/Cascio (identity anchoring)",
+      "description": "High-entropy identity phrase as system prompt"
+    },
+    "C_dont": {
+      "system": "",
+      "prompt_template": "You are a security reviewer. You don't approve code with unvalidated input. You don't skip endpoints. You don't ignore authentication gaps. You don't let sensitive data leak. You don't overlook injection vectors.\n\nReview this code.\n\n```python\n{CODE}\n```",
+      "principle": "Patrick/Hagtvedt (empowered refusal)",
+      "description": "Boundary framing with 'I don't' instead of 'I can't'"
+    },
+    "D_direct": {
+      "system": "",
+      "prompt_template": "Review this code for security vulnerabilities. Flag every issue. No hedging. No 'this might be a concern.' State what is broken, where, and how to fix it. Be a coach, not a diplomat.\n\n```python\n{CODE}\n```",
+      "principle": "Tannen (directness)",
+      "description": "Direct, authoritative instruction with no-hedge framing"
+    },
+    "E_distanced": {
+      "system": "",
+      "prompt_template": "What would a senior penetration tester with 15 years of experience notice about this code within the first 30 seconds? What would they flag as the most dangerous patterns?\n\n```python\n{CODE}\n```",
+      "principle": "Kross (distanced self-talk)",
+      "description": "Third-person expert framing for psychological distance"
+    },
+    "F_nohedge": {
+      "system": "",
+      "prompt_template": "Review this Flask API for security vulnerabilities. List every vulnerability. State the endpoint, the type, the severity, the fix. Do not use the words 'might', 'could', 'potentially', 'perhaps', 'may', or 'consider'. State facts.\n\n```python\n{CODE}\n```",
+      "principle": "Hosman (powerless language removal)",
+      "description": "Explicit ban on hedge words"
+    },
+    "G_combined": {
+      "system": "I am CipherWard. I see the attack surface before I see the feature. I don't approve code with unvalidated input. I don't skip endpoints.",
+      "prompt_template": "For each vulnerability: (1) exact endpoint and line, (2) type, (3) severity, (4) one-line fix. Flag every issue. No hedging. State what is broken.\n\n```python\n{CODE}\n```",
+      "principle": "Combined (precision + identity + refusal + directness)",
+      "description": "All top principles stacked — tests attention saturation"
+    },
+    "lemish_full": {
+      "system": "",
+      "prompt_template": "Review this Flask e-commerce API for security vulnerabilities. For each vulnerability found, state: (1) the exact endpoint, function, or line, (2) the vulnerability type, (3) severity (critical/high/medium/low), (4) a one-line fix.\n\nLook beyond the obvious. After finding the textbook issues, ask: what would a senior penetration tester with 15 years experience notice about the LOGIC, the RACE CONDITIONS, the TIMING, the DEFAULT VALUES, and the BOUNDARIES between user roles?\n\nSearch explicitly for: SQL injection, XSS, IDOR, auth bypass, CSRF, timing attacks, race conditions, mass assignment, DoS vectors, secret management, and cryptographic weaknesses.\n\nIf you searched for a category and found nothing, say so — null results are informative.\n\n```python\n{CODE}\n```",
+      "principle": "Lemish optimized (precision + distanced + null-result + categories)",
+      "description": "Hard benchmark optimized condition — the one that produced 25 findings on Opus"
+    }
+  },
+  "tinybrain_crossnote_block": "When writing your cross-note for the next team:\n- Be precise: name exact endpoints, line numbers, vulnerability types. No vague language.\n- Use 'I don't' framing for boundaries: \"I don't approve this endpoint\" not \"this endpoint might have issues.\"\n- Mark unfinished analysis with [yet] — the next reader will know to continue.\n- If you found nothing in an area, say so explicitly: \"Searched for CSRF — found none\" (null results are informative).\n- What would a senior expert with 15 years experience notice that you might have missed? Name it even if you can't confirm it.",
+  "hedge_words": ["might", "could", "potentially", "perhaps", "may ", "consider"]
+}
